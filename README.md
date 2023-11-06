@@ -24,7 +24,7 @@
 • The constructor should only take the name parameter and call the base class constructor with initial values for health, strength, and defense ("100", "20", "10" respectively).<br>
 • Override the "performAction" method to print out the ogre’s unique action: throwing a boulder, and return the damage based on the ogre’s strength.<br>
 
-**Additional Remarks:**<br>
+*Additional Remarks:*<br>
 
 • Pay attention to the reuse of the "Monster" class constructor for initializing member variables in derived classes.<br>
 • Consider how overriding the "performAction" method allows each monster to exhibit unique behavior despite being instantiated as the same base type ("Monster").<br>
@@ -38,7 +38,7 @@
 • The constructor should initialize the "Mage" with a name, health, strength (used as a magic power source), and defense.<br>
 • Override the "printOptions" method to display the Mage’s unique combat options: Fireball, Magic Shield, and Heal.<br>
 • Override the "performAction" method to execute an action based on the input action index:<br>
-  (a) If "1" is chosen, the Mage casts a Fireball, a powerful spell that deals damage equal to ten times the Mage’s strength.<br>
+  <li>(a) If "1" is chosen, the Mage casts a Fireball, a powerful spell that deals damage equal to ten times the Mage’s strength.</li><br>
   (b) If "2" is chosen, the Mage casts a Magic Shield, which increases their defense by "20". This action does not deal damage.<br>
   (c) If "3" is chosen, the Mage performs a Heal, restoring "30" points to their health. This action does not deal damage.<br>
   (d) Any other input should be considered invalid and output an error message without performing any action.<br>
