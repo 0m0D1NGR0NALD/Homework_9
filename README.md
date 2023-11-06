@@ -3,42 +3,70 @@
 *  Upload the Classes code in main.h
 *  Upload the main logic in main.hpp
 
-# Homework 5: Implementing the List Data Structure<br>
+*Due Date: Friday 10th of November, end of day*<br>
 
-*Due Date: Monday 9th of October, end of day*<br>
+# Homework Exercise 1: Implementing additional Monsters<br>
 
-In this homework, you are tasked to design and implement a system for an online retail store. Given the description and requirements below, you have to decide the appropriate containers to use among std::vector, std::set, and std::map.<br>
+**Objective:** Extend your knowledge of inheritance and polymorphism by implementing specific "Monster" derivatives with unique behaviors.
 
-The retail store offers a variety of products. Each product has a unique product ID, a name, and a price. Customers can place orders, with each order containing one or more products. Each customer has a unique customer ID and a name.<br>
+1. Dragon Class:
+• Create a "Dragon" class that inherits from the "Monster" class.
+• The constructor should only take the name parameter and call the base class constructor with initial values for health, strength, and defense ("200", "40", "15" respectively).
+• Override the "performAction" method to print out the dragon’s unique action: breathing fire, and return the damage based on the dragon's strength.
 
-## A Brief about std::pair
+3. Goblin Class:
+• Create a "Goblin" class that inherits from the "Monster" class.
+• The constructor should only take the name parameter and call the base class constructor with initial values for health, strength, and defense ("50", "5", "0" respectively).
+• Override the "performAction" method to allow the goblin to attempt to flee if its health is below "20". If fleeing, print a message and return "0" damage. Otherwise, print a message indicating a club swing and return the damage based on the goblin’s strength.
 
-When you’re working with maps, you’re often dealing with pairs. A pair is a simple data structure provided by the C++ Standard Library to store two heterogeneous objects as a single unit. A map in C++ is essentially a collection of such pairs where the first item of the pair (accessible via .first) acts as the key and the second item (accessible via .second) as the associated value.<br>
+3. Ogre Class:
+• Create an "Ogre" class that inherits from the "Monster" class.
+• The constructor should only take the name parameter and call the base class constructor with initial values for health, strength, and defense ("100", "20", "10" respectively).
+• Override the "performAction" method to print out the ogre’s unique action: throwing a boulder, and return the damage based on the ogre’s strength.
 
-For example, if you have a std::map<std::string, float> products, each element in this map is a pair. The .first attribute would give the product name (a string), and the .second attribute would give its price (a float).<br>
+**Additional Remarks:**
 
-*Hint: When iterating through a map using a range-based for loop, each element will be a pair. This can be useful when you want both the key and the value during the iteration.*<br>
+• Pay attention to the reuse of the "Monster" class constructor for initializing member variables in derived classes.
+• Consider how overriding the "performAction" method allows each monster to exhibit unique behavior despite being instantiated as the same base type ("Monster").
 
-# Tasks<br>
+# Homework Exercise 2: Implementing the Mage Class
+**Objective:** Build on your understanding of class inheritance and virtual functions by creating a "Mage" class derived from "PlayerCharacter".
 
-1. Design and implement a Product class. This class should store details about a product. Add private members:<br>
-• std::string _productID<br>
-• std::string _name<br>
-• float _price<br>
+1. Mage Class:
+• Develop a "Mage" class that is a subclass of the "PlayerCharacter".
+• The constructor should initialize the "Mage" with a name, health, strength (used as a magic power source), and defense.
+• Override the "printOptions" method to display the Mage’s unique combat options: Fireball, Magic Shield, and Heal.
+• Override the "performAction" method to execute an action based on the input action index:
+(a) If "1" is chosen, the Mage casts a Fireball, a powerful spell that deals damage equal to ten times the Mage’s strength.
+(b) If "2" is chosen, the Mage casts a Magic Shield, which increases their defense by "20". This action does not deal damage.
+(c) If "3" is chosen, the Mage performs a Heal, restoring "30" points to their health. This action does not deal damage.
+(d) Any other input should be considered invalid and output an error message without performing any action.
 
-2. Design and implement an Order class. This class should store the products that make up an order. Suggested private member:<br>
-• A container (your choice) named _orderedProducts to store products.<br>
+**Additional Remarks:**
 
-3. Design and implement a Customer class. Add the following private members:<br>
-• std::string _customerID<br>
-• std::string _customerName<br>
-• A container (your choice) named _orders to store the customer’s orders.<br>
+• Reflect on the use of private methods within the class to perform actions, which keeps the action implementations encapsulated within the Mage class.
+• Consider the implications of using strength as a measure for magical ability and how this might affect the design of your character classes.
 
-4. Design a system that allows:<br>
-• void addProductToInventory(const Product& product): Adding new products to the store’s inventory.<br>
-• void placeOrderForCustomer(const std::string& customerID, const Order& order): Placing an order for a customer.<br>
-• std::list<Product> getProductsOrderedByCustomer(const std::string& customerID) const: Retrieving a list of all products ordered by a specific customer.<br>
-• float getTotalExpenditureOfCustomer(const std::string& customerID) const: Retrieving the total expenditure of a customer.<br>
-• std::list<std::string> getCustomersWhoPurchasedProduct(const std::string& productID) const: Listing all customers who purchased a particular product.<br>
+# Bonus Exercise: Advanced Mage Class Mechanics
 
-5. Implement the system and create a main function to showcase its functionality. Add at least three products, two customers, and place at least three orders in total.<br>
+The BattleMage is an advanced practitioner of magic, capable of powerful offensive and defensive spells. Unlike a regular Mage, a BattleMage must manage a mana resource, which depletes with each spell and regenerates over time. Additionally, some spells have cooldown periods to prevent them from being used consecutively without pause.
+
+**Objective:** Enhance your knowledge of class inheritance, encapsulation, and polymorphism by developing a "BattleMage" class derived from the "Mage" class, which incorporates mana management and cooldowns for casting spells.
+
+1. BattleMage Class:
+• Create a "BattleMage" class that inherits from the "Mage" class.
+• The constructor should initialize the ‘BattleMage‘ with a name, health, magic power, defense, and a new attribute, double mana.
+• Implement the void regenerateMana() and void updateCooldowns() private methods to handle mana regeneration and spell cooldowns at the beginning of each action. the regenerateMana function
+should increase the mana by a specific amount (say 20) and the updateCooldowns function should decrease all cooldowns by 1;
+• Override the "printOptions" method to display the BattleMage's combat options, which include the cost and cooldown for each spell.
+• Override the "performAction" method to execute an action based on the input action index and manage the cooldowns and mana costs:
+  (a) If "1" is chosen, the BattleMage attempts to cast a Fireball spell, which has a mana cost and a cooldown period before it can be used again.
+  (b) If "2" is chosen, the BattleMage casts a Magic Shield, which has a mana cost but no cooldown.
+  (c) If "3" is chosen, the BattleMage performs a Heal spell, which has a higher mana cost and a cooldown period.
+  (d) Invalid inputs should prompt an error message without performing any action.
+• Override the "fireball", "magicShield", and "heal" methods to include checks for sufficient mana and to implement cooldowns where appropriate.
+
+**Additional Remarks:**
+
+• Reflect on the strategy behind mana and cooldown management. How do these new gameplay mechanics influence the decisions made during combat?
+• Consider how the introduction of mana as a resource and cooldowns as a limitation create a more dynamic and challenging combat experience.
