@@ -38,11 +38,12 @@
 • The constructor should initialize the "Mage" with a name, health, strength (used as a magic power source), and defense.<br>
 • Override the "printOptions" method to display the Mage’s unique combat options: Fireball, Magic Shield, and Heal.<br>
 • Override the "performAction" method to execute an action based on the input action index:<br>
+<ol>
   <li>(a) If "1" is chosen, the Mage casts a Fireball, a powerful spell that deals damage equal to ten times the Mage’s strength.</li><br>
-  (b) If "2" is chosen, the Mage casts a Magic Shield, which increases their defense by "20". This action does not deal damage.<br>
-  (c) If "3" is chosen, the Mage performs a Heal, restoring "30" points to their health. This action does not deal damage.<br>
-  (d) Any other input should be considered invalid and output an error message without performing any action.<br>
-
+  <li>(b) If "2" is chosen, the Mage casts a Magic Shield, which increases their defense by "20". This action does not deal damage.</li><br>
+  <li>(c) If "3" is chosen, the Mage performs a Heal, restoring "30" points to their health. This action does not deal damage.</li><br>
+  <li>(d) Any other input should be considered invalid and output an error message without performing any action.</li><br>
+</ol>
 **Additional Remarks:**<br>
 
 • Reflect on the use of private methods within the class to perform actions, which keeps the action implementations encapsulated within the Mage class.<br>
