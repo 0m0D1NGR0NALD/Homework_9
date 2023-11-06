@@ -8,28 +8,35 @@
 #include<iostream>
 #include<bits/stdc++.h>
 
-class Product {
+class Dragon {
 private:
    // put your code here
 public:
    // put your code here
 };
 
-class Order {
+class Goblin {
 private:
    // put your code here
 public:
    // put your code here
 };
 
-class Customer {
+class Ogre {
 private:
    // put your code here
 public:
    // put your code here
 };
 
-class RetailStore {
+class Mage {
+private:
+   // put your code here
+public:
+   // put your code here
+};
+
+class BattleMage {
 private:
    // put your code here
 public:
