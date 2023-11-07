@@ -8,6 +8,41 @@
 #include<iostream>
 #include<bits/stdc++.h>
 
+class BaseCharacter {
+private:
+   // put your code here
+public:
+   // put your code here
+};
+
+class PlayerCharacter {
+private:
+   // put your code here
+public:
+   // put your code here
+};
+
+class Warrior {
+private:
+   // put your code here
+public:
+   // put your code here
+};
+
+class Mage {
+private:
+   // put your code here
+public:
+   // put your code here
+};
+
+class Monster {
+private:
+   // put your code here
+public:
+   // put your code here
+};
+
 class Dragon {
 private:
    // put your code here
@@ -29,14 +64,14 @@ public:
    // put your code here
 };
 
-class Mage {
+class BattleMage {
 private:
    // put your code here
 public:
    // put your code here
 };
 
-class BattleMage {
+class BattleManager {
 private:
    // put your code here
 public:
