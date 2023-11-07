@@ -10,49 +10,34 @@
 // }
 
 // Define test cases using the TEST_CASE macro from Catch2.
-TEST_CASE("Test retail store functionality") {
-    RetailStore store;
+TEST_CASE("BaseCharacter takeDamage and isAlive") {
+    BaseCharacter character("TestCharacter", 100, 10, 5);
 
-    Product mathBook("P01", "Math Book", 50.0);
-    Product physicsBook("P02", "Physics Book", 60.0);
-    Product chemistryBook("P03", "Chemistry Book", 55.0);
-
-    store.addProductToInventory(mathBook);
-    store.addProductToInventory(physicsBook);
-    store.addProductToInventory(chemistryBook);
-
-    Customer alice("C01", "Alice");
-    Customer bob("C02", "Bob");
-
-    store.addCustomer(alice);
-    store.addCustomer(bob);
-
-    Order order1;
-    order1.addProduct(mathBook);
-    order1.addProduct(chemistryBook);
-
-    Order order2;
-    order2.addProduct(physicsBook);
-
-    store.placeOrderForCustomer("C01", order1);
-    store.placeOrderForCustomer("C02", order2);
-
-    // Test cases to check the functionality of your retail store methods.
-    SECTION("Test getTotalExpenditureOfCustomer") {
-        REQUIRE(store.getTotalExpenditureOfCustomer("C01") == Approx(105.0)); // Alice
-        REQUIRE(store.getTotalExpenditureOfCustomer("C02") == Approx(60.0));  // Bob
+    SECTION("Character takes damage") {
+        character.takeDamage(20);
+        REQUIRE(character.getHealth() == 80);
     }
 
-    SECTION("Test getCustomersWhoPurchasedProduct") {
-        std::list<std::string> customersWhoBoughtMath = store.getCustomersWhoPurchasedProduct("P01");
-        REQUIRE(customersWhoBoughtMath.size() == 1);
-        REQUIRE(customersWhoBoughtMath.front() == "C01"); // Alice bought the Math Book
-
-        std::list<std::string> customersWhoBoughtPhysics = store.getCustomersWhoPurchasedProduct("P02");
-        REQUIRE(customersWhoBoughtPhysics.size() == 1);
-        REQUIRE(customersWhoBoughtPhysics.front() == "C02"); // Bob bought the Physics Book
+    SECTION("Character takes more damage than health") {
+        character.takeDamage(120);
+        REQUIRE(character.getHealth() == 0);
+        REQUIRE_FALSE(character.isAlive());
     }
 
-    // Add more test cases as needed to cover your code's functionality.
+    SECTION("Character takes damage with defense") {
+        character.takeDamage(8);
+        REQUIRE(character.getHealth() == 92);
+    }
 }
+
+TEST_CASE("PlayerCharacter performAction") {
+    PlayerCharacter character("TestPlayerCharacter", 100, 10, 5);
+
+    SECTION("Perform action and check damage") {
+        double damage = character.performAction(1);
+        REQUIRE(damage == 10);
+    }
+}
+
+// Add more test cases for other classes
 
