@@ -6,6 +6,7 @@
 #include<set>
 #include<cmath>
 #include<iostream>
+#include <vector>
 #include<bits/stdc++.h>
 
 class BaseCharacter {
